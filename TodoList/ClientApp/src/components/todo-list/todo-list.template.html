@@ -1,0 +1,31 @@
+<ng-container>
+  <style>
+    table {
+      width: 100%;
+    }
+  </style>
+  <table>
+    <colgroup>
+      <col style="width:10%" />
+      <col />
+      <col style="width:15%" />
+    </colgroup>
+    <tr class="table-head">
+      <th>Task Id</th>
+      <th>Name</th>
+      <th>Status</th>
+    </tr>
+    <ng-container *ngFor="let todo of todoList">
+      <tr>
+        <td>{{todo.id}}</td>
+        <td>{{todo.name}}</td>
+        <td>
+          {{todo.isComplete ? "Complete" : "Incomplete"}}
+          <button *ngIf="!todo.isComplete" (click)="markComplete(todo)">
+            <i class="glyphicon-check" style="color: green"></i>
+          </button>
+        </td>
+      </tr>
+    </ng-container>
+  </table>
+</ng-container>

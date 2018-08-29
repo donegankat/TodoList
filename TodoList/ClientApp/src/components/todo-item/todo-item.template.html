@@ -1,0 +1,7 @@
+<ng-container>
+  <span>{{todo.id}}</span>
+  <input type="text" [(ngModel)]="todo.name" required />
+  <button (click)="markComplete()">
+    <i class="glyphicon-check" style="color: green"></i>
+  </button>
+</ng-container>
