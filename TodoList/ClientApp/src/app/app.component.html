@@ -3,9 +3,15 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
-  
-  <todo-list></todo-list>
-  <button (click)="createTodo()">New</button>
+
+  <ng-container *ngIf="this.todoList">
+    <todo-list [todoList]="getComplete(false)" [completeList]="false"></todo-list>
+    <button (click)="createTodo()">New</button>
+    <br />
+    <hr />
+    <br />
+    <todo-list [todoList]="getComplete(true)" [completeList]="true"></todo-list>
+  </ng-container>
 
 </div>
 

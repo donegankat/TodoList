@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
+
+
+.container-fluid {
+  width: auto;
+  margin: 20px;
+  border: 1px outset lightgrey;
+  border-radius: 20px;
+  box-shadow: lightgrey 5px 5px;
+}
+
+.block-header {
+  margin: 15px;
+}
+
+table {
+  width: 100%;
+}
+
+.fa-check {
+  color: green;
+}
+
+todo-list {
+  max-height: 100px;
+}

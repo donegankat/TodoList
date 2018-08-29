@@ -1,31 +1,52 @@
-<ng-container>
-  <style>
-    table {
-      width: 100%;
-    }
-  </style>
-  <table>
-    <colgroup>
-      <col style="width:10%" />
-      <col />
-      <col style="width:15%" />
-    </colgroup>
-    <tr class="table-head">
-      <th>Task Id</th>
-      <th>Name</th>
-      <th>Status</th>
-    </tr>
-    <ng-container *ngFor="let todo of todoList">
-      <tr>
-        <td>{{todo.id}}</td>
-        <td>{{todo.name}}</td>
-        <td>
-          {{todo.isComplete ? "Complete" : "Incomplete"}}
-          <button *ngIf="!todo.isComplete" (click)="markComplete(todo)">
-            <i class="glyphicon-check" style="color: green"></i>
-          </button>
-        </td>
-      </tr>
-    </ng-container>
-  </table>
+<ng-container *ngIf="todoList">
+  <div class="container-fluid">
+    <div class="block-header">
+      <h3>{{this.completeList ? "Completed" : "Incomplete"}} Tasks</h3>
+    </div>
+    <table class="table">
+      <thead [ngClass]="getTableClass()">
+        <tr>
+          <th>Task Id</th>
+          <th>Name</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <colgroup>
+        <col style="width:10%" />
+        <col />
+        <col style="width:15%" />
+        <col style="width:5%" />
+      </colgroup>
+      <ng-container *ngFor="let todo of todoList">
+        <tr>
+          <td>{{todo.id}}</td>
+          <td *ngIf="todo.isEditing">
+            <div class="input-group">
+              <input [(ngModel)]="todo.name" type="text" class="form-control" placeholder="Todo Name" aria-label="Todo Name" aria-describedby="button-addon">
+              <div class="input-group-append">
+                <button (click)="updateItem(todo)" class="btn btn-outline-success" type="button" id="button-addon">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </button>
+                <button (click)="cancelUpdateItem(todo)" class="btn btn-outline-danger" type="button" id="button-addon">
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </td>
+          <td *ngIf="!todo.isEditing" (click)="todo.isEditing = true">
+            {{todo.name}}
+          </td>
+          <td>
+            {{todo.isComplete ? "Complete" : "Incomplete"}}
+          </td>
+          <td>
+            <button *ngIf="!todo.isComplete" (click)="markComplete(todo)">
+              <i class="fa fa-check" aria-hidden="true"></i>
+            </button>
+          </td>
+        </tr>
+      </ng-container>
+    </table>
+  </div>
 </ng-container>
