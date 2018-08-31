@@ -5,12 +5,12 @@
   </h1>
 
   <ng-container *ngIf="this.todoList">
-    <todo-list [todoList]="getComplete(false)" [completeList]="false"></todo-list>
+    <todo-list [todoList]="getComplete(false)" [isCompleteList]="false"></todo-list>
     <button (click)="createTodo()">New</button>
     <br />
     <hr />
     <br />
-    <todo-list [todoList]="getComplete(true)" [completeList]="true"></todo-list>
+    <todo-list [todoList]="getComplete(true)" [isCompleteList]="true"></todo-list>
   </ng-container>
 
 </div>

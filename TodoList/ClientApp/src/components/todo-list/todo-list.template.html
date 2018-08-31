@@ -1,7 +1,7 @@
 <ng-container *ngIf="todoList">
   <div class="container-fluid">
     <div class="block-header">
-      <h3>{{this.completeList ? "Completed" : "Incomplete"}} Tasks</h3>
+      <h3>{{this.isCompleteList ? "Complete" : "Incomplete"}} Tasks</h3>
     </div>
     <table class="table">
       <thead [ngClass]="getTableClass()">
@@ -21,20 +21,20 @@
       <ng-container *ngFor="let todo of todoList">
         <tr>
           <td>{{todo.id}}</td>
-          <td *ngIf="todo.isEditing">
+          <td *ngIf="todo.isEditing && !todo.isComplete">
             <div class="input-group">
               <input [(ngModel)]="todo.name" type="text" class="form-control" placeholder="Todo Name" aria-label="Todo Name" aria-describedby="button-addon">
               <div class="input-group-append">
-                <button (click)="updateItem(todo)" class="btn btn-outline-success" type="button" id="button-addon">
+                <button (click)="updateTodoItem(todo)" class="btn btn-outline-success" type="button" id="button-addon">
                   <i class="fa fa-check" aria-hidden="true"></i>
                 </button>
-                <button (click)="cancelUpdateItem(todo)" class="btn btn-outline-danger" type="button" id="button-addon">
+                <button (click)="cancelEditTodoItem(todo)" class="btn btn-outline-danger" type="button" id="button-addon">
                   <i class="fa fa-times" aria-hidden="true"></i>
                 </button>
               </div>
             </div>
           </td>
-          <td *ngIf="!todo.isEditing" (click)="todo.isEditing = true">
+          <td *ngIf="!todo.isEditing" (click)="editTodoItem(todo)">
             {{todo.name}}
           </td>
           <td>

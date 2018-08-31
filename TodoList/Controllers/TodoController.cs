@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using TodoList.Data.Contexts;
 using TodoList.Data.Entities;
 using TodoList.Data.Repositories;
-using TodoList.Models;
 
 namespace TodoList.Controllers
 {
@@ -21,8 +20,7 @@ namespace TodoList.Controllers
 
             if (_context.TodoTasks.Count() == 0)
             {
-                // Create a new TodoItem if collection is empty,
-                // which means you can't delete all TodoItems.
+                // Create a new TodoTask if the collection is empty.
                 _context.TodoTasks.Add(new TodoTask { Name = "Item1" });
                 _context.SaveChanges();
             }

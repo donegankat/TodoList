@@ -25,7 +25,6 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\components\index.ts" />
-    <None Remove="ClientApp\src\components\todo-item\todo-item.component.ts" />
     <None Remove="ClientApp\src\components\todo-list\todo-list.component.ts" />
     <None Remove="ClientApp\src\services\index.ts" />
     <None Remove="ClientApp\src\services\server-request.service.ts" />
@@ -38,7 +37,6 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\components\index.ts" />
-    <TypeScriptCompile Include="ClientApp\src\components\todo-item\todo-item.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\components\todo-list\todo-list.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\services\index.ts" />
     <TypeScriptCompile Include="ClientApp\src\services\server-request.service.ts" />

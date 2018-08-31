@@ -12,20 +12,18 @@ namespace TodoList.UnitTests
     public class TodoTests
     {
         [Fact]
-        public void Test1()
+        public void AddTodoTasksToContext()
         {
             var builder = new DbContextOptionsBuilder<TodoContext>();
-            builder.UseInMemoryDatabase();
+            builder.UseInMemoryDatabase("TodoDB");
             var options = builder.Options;
 
             using (var context = new TodoContext(options))
             {
                 var todoTasks = new List<TodoTask>
                 {
-                    new TodoTask { Id= 1, Name = "Tanzim Saqib", IsComplete = true },
-                    new TodoTask { Id= 2, Name = "Fiyaz Hasan", IsComplete = true },
-                    new TodoTask { Id= 3, Name = "Jon Doe", IsComplete = false },
-                    new TodoTask { Id= 4, Name = "Jane DOe", IsComplete = false }
+                    new TodoTask { Id = 1, Name = "Item1", IsComplete = true },
+                    new TodoTask { Id = 2, Name = "Item2", IsComplete = true },
                 };
 
                 context.AddRange(todoTasks);
@@ -34,9 +32,7 @@ namespace TodoList.UnitTests
 
             using (var context = new TodoContext(options))
             {
-                var repository = new TodoRepository(context);
-                var todoTasks = repository.GetTasks();
-                Assert.Equal(2, todoTasks.Count());
+                Assert.Equal(2, context.TodoTasks.Count());
             }
         }
     }
